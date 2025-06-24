@@ -2,7 +2,7 @@ resource "konnect_gateway_plugin_rate_limiting_advanced" "global_limiting_advanc
  enabled = true
 
  config = {
-   limit = [10]
+   limit = [5]
    window_size = [60]
    identifier = "consumer"
    sync_rate = -1
