@@ -8,6 +8,9 @@ on:
 
 env:
   TF_LOG: INFO
+  TF_VARS_system_account_access_token: ${{ secrets.KONNECT_SPAT }}
+  TF_VARS_server_url: "https://us.api.konghq.com"
+  TF_VARS_env: "production"
 
 jobs:
   terraform:
