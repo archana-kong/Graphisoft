@@ -41,5 +41,7 @@ jobs:
       if: github.ref == 'refs/heads/main'
       working-directory: ./terraform
       run: terraform apply -auto-approve -input=false
+        echo "pat token:${{ secrets.KONNECT_PAT }}"
+        echo "spat token:$TF_VAR_system_account_access_token"
       env:
         KONNECT_PAT: ${{ secrets.KONNECT_PAT }}
