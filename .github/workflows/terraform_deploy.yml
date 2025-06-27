@@ -9,7 +9,7 @@ on:
 env:
   TF_LOG: INFO
   TF_VAR_system_account_access_token: ${{ secrets.KONNECT_SPAT }}
-  TF_VAR_server_url: ${{ secrets.serverurl }}
+  TF_VAR_server_url: ${{ secrets.TEST }}
   TF_VAR_environment: "production"
 
 jobs:
