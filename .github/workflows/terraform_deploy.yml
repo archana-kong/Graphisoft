@@ -8,7 +8,7 @@ on:
 
 env:
   TF_LOG: INFO
-  TF_VAR_system_account_access_token: "spat_36l8JxvaNTaeGfB4ONpoSfH8TwtQ1FV3lh3DDeZOxLvwih5wi"
+  TF_VAR_system_account_access_token: ${{ secrets.KONNECT_SPAT }}
   TF_VAR_server_url: "https://us.api.konghq.com"
   TF_VAR_environment: "production"
 
