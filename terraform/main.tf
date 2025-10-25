@@ -25,18 +25,6 @@ resource "konnect_gateway_control_plane" "kongair_internal_cp" {
   }
   name = "KongAir_Internal"
 }
-resource "konnect_gateway_control_plane" "kongair_global_cp" {
-  name = "KongAir_Global"
-  auth_type     = "pki_client_certs"
-  cloud_gateway = false
-  cluster_type  = "CLUSTER_TYPE_CONTROL_PLANE"
-  description   = "CP for KongAir Global API Configurations"
-  labels = {
-    env = var.environment
-    team = "platform"
-    generated_by =  "terraform"
-  }
-}
 
 # Internal Developer Team
 # The internal developers team is responsible for managing the internal control plane configuration
@@ -68,21 +56,14 @@ resource "konnect_team_role" "kong_air_internal_cp_viewer" {
   team_id          = konnect_team.kong_air_internal_viewers.id
 }
 # Platform Admins Team
-# The platform admins team is responsible for managing all entities in the global,
+# The platform admins team is responsible for managing all entities in the
 # internal control planes.
 
 resource "konnect_team" "platform_admins" {
-  description = "Allow managing entities in the global, internal control planes"
+  description = "Allow managing entities in the  internal control planes"
   name        = "Platform Admins"
 }
 
-resource "konnect_team_role" "platform_admins_global_cp_admin" {
-  entity_id        = konnect_gateway_control_plane.kongair_global_cp.id
-  entity_region    = "us"
-  entity_type_name = "Control Planes"
-  role_name        = "Admin"
-  team_id          = konnect_team.platform_admins.id
-}
 
 resource "konnect_team_role" "platform_admins_internal_cp_admin" {
   entity_id        = konnect_gateway_control_plane.kongair_internal_cp.id
@@ -93,21 +74,14 @@ resource "konnect_team_role" "platform_admins_internal_cp_admin" {
 }
 
 # Platform Viewers Team
-# The platform viewers team is responsible for monitoring all entities in the global,
+# The platform viewers team is responsible for monitoring all entities in the 
 # internal control planes.
 
 resource "konnect_team" "platform_viewers" {
-  description = "Allow read-only access to all entities in the global, internal control planes"
+  description = "Allow read-only access to all entities in the internal control planes"
   name        = "Platform Viewers"
 }
 
-resource "konnect_team_role" "platform_viewers_global_cp_viewer" {
-  entity_id        = konnect_gateway_control_plane.kongair_global_cp.id
-  entity_region    = "us"
-  entity_type_name = "Control Planes"
-  role_name        = "Viewer"
-  team_id          = konnect_team.platform_viewers.id
-}
 
 resource "konnect_team_role" "platform_viewers_internal_cp_viewer" {
   entity_id        = konnect_gateway_control_plane.kongair_internal_cp.id
