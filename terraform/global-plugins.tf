@@ -11,5 +11,5 @@ resource "konnect_gateway_plugin_rate_limiting_advanced" "global_limiting_advanc
    hide_client_headers = false
  }
 
- control_plane_id = konnect_gateway_control_plane.kongair_global_cp.id
+ control_plane_id = konnect_gateway_control_plane.kongair_internal_cp.id
 }
