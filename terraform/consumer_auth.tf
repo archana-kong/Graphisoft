@@ -42,7 +42,7 @@ resource "konnect_gateway_consumer" "alex" {
 }
 
 #Adding ACL credentials for alex
-resource "konnect_gateway_plugin_acls" "my_acls_alex" {
+resource "konnect_gateway_acl" "my_acls_alex" {
   group = "External"
   control_plane_id = konnect_gateway_control_plane.kongair_internal_cp.id
   consumer = {
@@ -50,7 +50,7 @@ resource "konnect_gateway_plugin_acls" "my_acls_alex" {
   }
 }
 #Adding keyauth credentials for alex
-resource "konnect_gateway_plugin_keyauth_credentials" "my_keyauth_credentials_alex" {
+resource "konnect_gateway_key_auth" "my_keyauth_credentials_alex" {
   key = "alex"
   control_plane_id = konnect_gateway_control_plane.kongair_internal_cp.id
   consumer = {
@@ -66,7 +66,7 @@ resource "konnect_gateway_consumer" "roy" {
 }
 
 #Adding ACL credentials for roy
-resource "konnect_gateway_plugin_acls" "my_acls_roy" {
+resource "konnect_gateway_acl" "my_acls_roy" {
   group = "External"
   control_plane_id = konnect_gateway_control_plane.kongair_internal_cp.id
   consumer = {
@@ -75,7 +75,7 @@ resource "konnect_gateway_plugin_acls" "my_acls_roy" {
 }
 
 #Adding keyauth credentials for roy
-resource "konnect_gateway_plugin_keyauth_credentials" "my_keyauth_credentials_roy" {
+resource "konnect_gateway_key_auth" "my_keyauth_credentials_roy" {
   key = "roy"
   control_plane_id = konnect_gateway_control_plane.kongair_internal_cp.id
   consumer = {
