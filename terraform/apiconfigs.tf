@@ -1,7 +1,7 @@
 # Configure a service and a route that we can use to test
 #Create a service for openid connect
 resource "konnect_gateway_service" "httpbin" {
-  name             = "HTTPBin"
+  name             = "httpbin"
   protocol         = "http"
   host             = "httpbin.konghq.com"
   port             = 443
@@ -25,12 +25,18 @@ resource "konnect_gateway_service" "httpbin-keyauth" {
 #Attach the key auth plugin to service
 resource "konnect_gateway_plugin_key_auth" "my_key_auth" {
   config = {
+    identity_realms = [
+      {
+        scope = "cp"
+      }
+    ]
     key_in_body = false
     key_in_header = true
     key_in_query = true
     key_names = [
       "apikey"
     ]
+    run_on_preflight = true
   }
   control_plane_id = konnect_gateway_control_plane.kongair_internal_cp.id
   service = {
