@@ -87,7 +87,7 @@ resource "konnect_gateway_plugin_mtls_auth" "my_mtls_auth" {
   config = {
     authenticated_group_by = "CN"
     ca_certificates = [
-       konnect_gateway_ca_cert.my_ca_certificate.id
+       konnect_gateway_ca_certificate.my_ca_certificate.id
     ]
     consumer_by = []
     skip_consumer_lookup = true
@@ -146,7 +146,7 @@ resource "konnect_gateway_plugin_openid_connect" "my_headers_openid_connect" {
 
     ssl_verify = false
   }
-  control_plane_id = konnect_gateway_control_plane.my_konnect_cp.id
+  control_plane_id = konnect_gateway_control_plane.kongair_internal_cp.id
   route = {
     id = konnect_gateway_route.headers.id
   }
