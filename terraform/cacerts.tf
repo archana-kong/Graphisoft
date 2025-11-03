@@ -1,0 +1,29 @@
+#Add a CA certificate for Client mTLS authentication
+resource "konnect_gateway_ca_certificate" "my_ca_certificate" {
+  cert = "-----BEGIN CERTIFICATE-----
+MIIDBzCCAe+gAwIBAgIUHGYHVYVnfivYOqY8u9peUFvfhiowDQYJKoZIhvcNAQEL
+BQAwEzERMA8GA1UEAwwITXlSb290Q0EwHhcNMjUxMDI2MTMzOTEyWhcNMzUxMDI0
+MTMzOTEyWjATMREwDwYDVQQDDAhNeVJvb3RDQTCCASIwDQYJKoZIhvcNAQEBBQAD
+ggEPADCCAQoCggEBALMXrVoEIvkR31gEdbnnD4JInlBcy53MwPWLe47oFsSKBvp9
+Z2uL2jkLOdzoUTfLwdP1ojF895sKd6NdamRbGB6N2O1AG4dyL0dOIHRtqLjknNR9
+hdYXsklDXnhmYIu1PqPDwcTXk+Ag+urgvfFWVHlh29Zh+XsZLk3njAP2xPgHqxUh
+u0h2+NnG/Ptc37wQLkddZi9GuWdbgV7CSq9nZWU9Oll0jRudyIK4DWQSAocmAbfq
+Q/u9DV3zQ+ayplOtXDBW5IH22IcJ8rVfrO8ujN08cP0WkeBtttUSrJtGjGWCJJvj
+vModyqMOcZa8XcyLLMYo3M0iKghTnb17TkPgP5cCAwEAAaNTMFEwHQYDVR0OBBYE
+FJdvvCMthC6upJLS/cwQE90QGXs0MB8GA1UdIwQYMBaAFJdvvCMthC6upJLS/cwQ
+E90QGXs0MA8GA1UdEwEB/wQFMAMBAf8wDQYJKoZIhvcNAQELBQADggEBAHE8OZjB
+hE1Pnh9A4X8c4/vqVSmNRAEP6Ys9ZqPATWlEnqU3VFfcpbZkZezGX1ABqqxZbmUo
+aqsd1P5NYvh838dgPk9frETyWjqNv5F2i80FfXxnLDfl9Fi6A7nBpqFP1ZODx/wC
+RQRJqHUS+WUQP7mGqIRIrN0nt1H7YXob7JFSf4QUgvj+8YUOyXhl4LnlEcLy0hr1
+GemyIveoy2WjliAjN3JqPB0x3kyiau1CSeF9ooFcvkKWTm1QK6ADW9FVzcsEa3H1
+pVN7jMI717oT3u7Gntone274Yg/XLexY7E3ZaBFfHgwje/qYHvZcalaXI80dZbt8
+frHc6fNAqpuNXms=
+-----END CERTIFICATE-----"
+  tags = [
+    "newClientCACert"
+  ]
+  control_plane_id = konnect_gateway_control_plane.kongair_internal_cp.id
+}
+
+
+
