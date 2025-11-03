@@ -45,17 +45,13 @@ resource "konnect_gateway_consumer" "alex" {
 resource "konnect_gateway_acl" "my_acls_alex" {
   group = "External"
   control_plane_id = konnect_gateway_control_plane.kongair_internal_cp.id
-  consumer = {
-    id = konnect_gateway_consumer.joe.id
-  }
+  consumer_id      = konnect_gateway_consumer.alex.id
 }
 #Adding keyauth credentials for alex
 resource "konnect_gateway_key_auth" "my_keyauth_credentials_alex" {
   key = "alex"
   control_plane_id = konnect_gateway_control_plane.kongair_internal_cp.id
-  consumer = {
-    id = konnect_gateway_consumer.alex.id
-  }
+  consumer_id= konnect_gateway_consumer.alex.id
 }
 
 #Create an external consumer roy
@@ -69,16 +65,12 @@ resource "konnect_gateway_consumer" "roy" {
 resource "konnect_gateway_acl" "my_acls_roy" {
   group = "External"
   control_plane_id = konnect_gateway_control_plane.kongair_internal_cp.id
-  consumer = {
-    id = konnect_gateway_consumer.roy.id
-  }
+  consumer_id      = konnect_gateway_consumer.roy.id
 }
 
 #Adding keyauth credentials for roy
 resource "konnect_gateway_key_auth" "my_keyauth_credentials_roy" {
   key = "roy"
   control_plane_id = konnect_gateway_control_plane.kongair_internal_cp.id
-  consumer = {
-    id = konnect_gateway_consumer.roy.id
-  }
+  consumer_id = konnect_gateway_consumer.roy.id
 }
