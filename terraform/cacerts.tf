@@ -1,6 +1,7 @@
 #Add a CA certificate for Client mTLS authentication
 resource "konnect_gateway_ca_certificate" "my_ca_certificate" {
-  cert = "-----BEGIN CERTIFICATE-----
+  cert = <<EOF
+-----BEGIN CERTIFICATE-----
 MIIDBzCCAe+gAwIBAgIUHGYHVYVnfivYOqY8u9peUFvfhiowDQYJKoZIhvcNAQEL
 BQAwEzERMA8GA1UEAwwITXlSb290Q0EwHhcNMjUxMDI2MTMzOTEyWhcNMzUxMDI0
 MTMzOTEyWjATMREwDwYDVQQDDAhNeVJvb3RDQTCCASIwDQYJKoZIhvcNAQEBBQAD
@@ -18,7 +19,8 @@ RQRJqHUS+WUQP7mGqIRIrN0nt1H7YXob7JFSf4QUgvj+8YUOyXhl4LnlEcLy0hr1
 GemyIveoy2WjliAjN3JqPB0x3kyiau1CSeF9ooFcvkKWTm1QK6ADW9FVzcsEa3H1
 pVN7jMI717oT3u7Gntone274Yg/XLexY7E3ZaBFfHgwje/qYHvZcalaXI80dZbt8
 frHc6fNAqpuNXms=
------END CERTIFICATE-----"
+-----END CERTIFICATE-----
+EOF
   tags = [
     "newClientCACert"
   ]

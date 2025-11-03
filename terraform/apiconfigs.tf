@@ -87,7 +87,7 @@ resource "konnect_gateway_plugin_mtls_auth" "my_mtls_auth" {
   config = {
     authenticated_group_by = "CN"
     ca_certificates = [
-       id = konnect_gateway_ca_cert.my_ca_certificate.id
+       konnect_gateway_ca_cert.my_ca_certificate.id
     ]
     consumer_by = []
     skip_consumer_lookup = true
