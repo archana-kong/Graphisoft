@@ -4,6 +4,11 @@ resource "konnect_gateway_consumer" "joe" {
   custom_id        = "joe"
   control_plane_id = konnect_gateway_control_plane.kongair_internal_cp.id
 }
+resource "konnect_gateway_consumer" "test" {
+  username         = "test"
+  custom_id        = "test"
+  control_plane_id = konnect_gateway_control_plane.kongair_internal_cp.id
+}
 
 # Then a consumer group, and add the consumer to a group
 /*resource "konnect_gateway_consumer_group" "graphisoft" {
